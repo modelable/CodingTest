@@ -34,15 +34,15 @@ public class Solution {
                 case 'C': // 현재 선택된 행을 삭제한 후,
                     stack.push(pointer);
 
-                    if (pointer.prev != null) {
+                    if (pointer.prev != null) { 
                         pointer.prev.next = pointer.next;
                     }
 
-                    if (pointer.next != null) {
+                    if (pointer.next != null) { 
                         pointer.next.prev = pointer.prev;
-                        pointer = pointer.next;
+                        pointer = pointer.next; // 바로 아래 행을 선택합니다.
                     } else {
-                        pointer = pointer.prev;
+                        pointer = pointer.prev; // 삭제된 행이 가장 마지막 행인 경우 바로 윗 행을 선택합니다.
                     }
 
                     break;
