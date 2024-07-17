@@ -16,13 +16,11 @@ class Solution {
             char key = query.charAt(0);
             switch(key){
                 case 'U':
-                    {
-                    int x = Integer.valueOf(query.substring(2));
-                    while((x--)>0){
+                    for (int up = Integer.valueOf(query.substring(2)); up > 0; up--) {
                         iter = iter.prev;
-                    }
+                    }        
                     break;
-                }
+                
                 case 'D':{
                     int x = Integer.valueOf(query.substring(2));
                     while((x--)>0){
