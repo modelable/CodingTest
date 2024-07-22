@@ -10,6 +10,7 @@ class Solution {
             queue.add(new int[]{progresses[i], speeds[i]});
         }
 
+        // O(N^2): 기능 개발
         while (!queue.isEmpty()) {
             if (queue.peek()[0] < 100) {
                 for (int i = 0; i < queue.size(); i++) {
