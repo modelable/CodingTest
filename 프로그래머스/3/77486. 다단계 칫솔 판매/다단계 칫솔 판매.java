@@ -17,7 +17,7 @@ class Solution {
             nodes[i] = node;
         }
 
-        // 이익금 계산(O(M*N))
+        // 이익금 계산(O(N*log(M)))
         for (int i = 0; i < seller.length; i++) {
             String sellerName = seller[i];
             int profit = amount[i] * 100;
