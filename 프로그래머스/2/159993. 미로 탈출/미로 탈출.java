@@ -1,9 +1,10 @@
 import java.util.*;
 
 class Solution {
+    
     private static boolean[][] visited;
-    private static int[] rx = {0, 0, -1, 1};
-    private static int[] ry = {1, -1, 0, 0};
+    private static int[] dx = {0, 0, -1, 1};
+    private static int[] dy = {1, -1, 0, 0};
 
     public static int solution(String[] maps) {
         int answer = 0;
@@ -33,14 +34,14 @@ class Solution {
         //레버를 당긴다
         answer += BFS(start[0], start[1], lever, maps);
         if (answer == -1) return -1;
-        
+
         visited = new boolean[row][col];
 
         //출구로 이동한다
         int temp = answer;
         answer += BFS(lever[0], lever[1], end, maps);
         if (temp - answer == 1) return -1;
-        
+
         return answer;
     }
 
@@ -60,8 +61,8 @@ class Solution {
             }
 
             for (int i = 0; i < 4; i++) {
-                int nx = now[0] + rx[i];
-                int ny = now[1] + ry[i];
+                int nx = now[0] + dx[i];
+                int ny = now[1] + dy[i];
 
                 if (0 <= nx && nx < n && 0 <= ny && ny < m) {
                     if (!visited[nx][ny] && maps[nx].charAt(ny) != 'X') {
