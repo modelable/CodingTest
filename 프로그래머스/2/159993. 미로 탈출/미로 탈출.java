@@ -4,7 +4,7 @@ class Solution {
     
     private static boolean[][] visited;
     private static int[] dx = {0, 0, -1, 1};
-    private static int[] dy = {1, -1, 0, 0};
+    private static int[] dy = {-1, 1, 0, 0};
 
     public static int solution(String[] maps) {
         int answer = 0;
