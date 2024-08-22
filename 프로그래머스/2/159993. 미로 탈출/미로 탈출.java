@@ -33,11 +33,11 @@ class Solution {
         //레버를 당긴다
         answer += BFS(start[0], start[1], lever, maps);
         if (answer == -1) return -1;
-        int temp = answer;
         
         visited = new boolean[row][col];
 
         //출구로 이동한다
+        int temp = answer;
         answer += BFS(lever[0], lever[1], end, maps);
         if (temp - answer == 1) return -1;
         
