@@ -2,12 +2,11 @@ import java.util.*;
 
 public class Main {
 
-    private static int answer, N, S, numOfZero;
+    private static int answer, N, S;
     private static int[] arr;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        numOfZero = 0;
         answer = 0;
         N = sc.nextInt();
         S = sc.nextInt();
@@ -15,7 +14,6 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             arr[i] = sc.nextInt();
-            if (arr[i] == 0) numOfZero++;
         }
 
         Arrays.sort(arr);
@@ -25,11 +23,7 @@ public class Main {
     }
 
     public static void backtrack(int sum, int index) {
-        if (sum == S) {
-            answer++;
-            //return; 
-        }
-
+        if (sum == S) answer++;
         if (sum == 1000001) sum = 0;
 
         for (int i = index; i < N; i++) {
