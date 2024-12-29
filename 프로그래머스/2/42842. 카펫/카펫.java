@@ -1,7 +1,7 @@
 class Solution {
     public int[] solution(int b, int y) {
         int x;
-        for (x = 1; x < Math.abs(b + y); x++) {
+        for (x = 1; x < Math.sqrt(b + y); x++) {
             if (b + y == ((b + 4) / 2 - x) * x) {
                 break;
             }
