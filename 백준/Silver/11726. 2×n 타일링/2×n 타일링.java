@@ -15,8 +15,6 @@ public class Main {
 
     public static int tile(int i) {
         if (dp[i] != 0) return dp[i];
-        if (i == 1) return 1;
-        else if (i == 0) return 0;
         else return dp[i] = (tile(i - 1) + tile(i - 2)) % 10007;
     }
 }
