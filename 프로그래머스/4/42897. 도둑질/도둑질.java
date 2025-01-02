@@ -1,14 +1,11 @@
 public class Solution {
-    private static boolean check;
-
+    
     public static void main(String[] args) {
     }
 
     public static int solution(int[] money) {
-        check = false;
         int a = calc(0, money);
-        int b = Integer.MIN_VALUE;
-        if (check) b = calc(1, money);
+        int b = calc(1, money);
 
         return Math.max(a, b);
     }
@@ -21,7 +18,7 @@ public class Solution {
 
         dp[i] = money[i];
         firstElementUsed1 = true;
-        
+
         if (money[i] > money[i + 1]) {
             dp[i + 1] = money[i];
             firstElementUsed2 = true;
@@ -40,22 +37,19 @@ public class Solution {
                 boolean temp = firstElementUsed1;
                 firstElementUsed1 = firstElementUsed2;
                 firstElementUsed2 = temp;
-            } else {
+            } else
                 dp[i] = dp[i - 1];
-            }
         }
 
         //마지막 원소
         if (firstElementUsed1) {
             int max = Math.max(Math.max(dp[i - 1], dp[i - 2]), dp[i - 2] - money[0] + money[i]);
             dp[i] = max;
-            check = true;
         } else {
             if (dp[i - 2] + money[i] > dp[i - 1]) {
                 dp[i] = dp[i - 2] + money[i];
-            } else {
+            } else
                 dp[i] = dp[i - 1];
-            }
         }
 
         return dp[i];
