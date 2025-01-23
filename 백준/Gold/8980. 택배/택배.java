@@ -33,23 +33,28 @@ public class Main {
 		}
 
 		//간격이 짧은 순으로 정렬
-		Collections.sort(list, (o1, o2) -> (o1.end - o1.start) - (o2.end - o2.start));
+		Collections.sort(list, (o1, o2) -> {
+			if (o1.end == o2.end)
+				return o1.start - o2.start;
+			return o1.end - o2.end;
+		}); 
 		
 		int answer = 0;
 		int[] truck = new int[N + 1]; //구간별 박스 무게 
 		
-		for (int i = 0; i < list.size(); i++) {
+		for (int i = 0; i < list.size(); i++) { //O(M) (10,000)
 			Node box = list.get(i);
 
 			//박스의 최대 적재량 구하기
-			for (int j = box.start; j < box.end; j++) {
-				
-				if (truck[j] + box.count > C)
-					box.count = C - truck[j];
+			for (int j = box.start; j < box.end; j++) { //O(N) (2,000)
+				if (truck[j] + box.count > C) { //용량 부족
+					if (C - truck[j] < box.count) //무게를 더 줄여야 하는 경우
+						box.count = C - truck[j];
+				}
 			}
 			
 			//truck[] 배열에 저장
-			for (int j = box.start; j < box.end; j++) {
+			for (int j = box.start; j < box.end; j++) { //O(N) (2,000)
 				truck[j] += box.count;
 			}
 			
