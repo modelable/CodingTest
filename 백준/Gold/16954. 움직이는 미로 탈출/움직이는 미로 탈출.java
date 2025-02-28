@@ -12,7 +12,6 @@ public class Main {
     	
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
     	
-    	
     	list = new ArrayList<>();
     	
         for (int i = 0; i < 8; i++) {
@@ -25,13 +24,13 @@ public class Main {
         	}
         }
         
-        bfs(7, 0, 0);
+        dfs(7, 0, 0);
         
         if (answer) System.out.println(1);
         else System.out.println(0);
     }
 
-    public static void bfs(int a, int b, int round) {
+    public static void dfs(int a, int b, int round) {
     	
     	if (answer || a < 0 || b < 0 || a >= 8 || b >= 8)
     		return;
@@ -53,7 +52,7 @@ public class Main {
         			check = true;
         	}
     		if (!check)
-    			bfs(a + dx[i], b + dy[i], round + 1);
+    			dfs(a + dx[i], b + dy[i], round + 1);
     	}
     }
 }
