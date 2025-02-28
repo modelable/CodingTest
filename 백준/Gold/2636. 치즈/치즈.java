@@ -18,6 +18,7 @@ public class Main {
     	n = Integer.parseInt(st.nextToken());
     	m = Integer.parseInt(st.nextToken());
     	graph = new char[n][m];
+    	visited = new boolean[n][m];
     	
     	for (int i = 0; i < n; i++) {
     		st = new StringTokenizer(br.readLine());
@@ -32,7 +33,6 @@ public class Main {
     	while (true) {
     		answer++;
     	
-        	visited = new boolean[n][m];
     		int temp = func(); 
     		
     		if (temp == 0) {
@@ -71,11 +71,7 @@ public class Main {
     		return 0;
     	
     	// 2. 공기에 닿는 부분을 'c'로 변경
-    	for (int i = 0; i < n; i++) {
-    		for (int j = 0; j < m; j++) {
-    			bfs(0, 0);
-    		}
-    	}
+    	bfs(0, 0);
     	
     	// 3. 'c'를 제거
     	for (int i = 0; i < n; i++) {
@@ -92,6 +88,7 @@ public class Main {
     	
     	Queue<int[]> queue = new LinkedList<>();
     	queue.add(new int[] {a, b});
+    	visited = new boolean[n][m];
     	
     	while (!queue.isEmpty()) {
     		int[] temp = queue.poll();
@@ -116,8 +113,5 @@ public class Main {
     			}
     		}
     	}
-    	
     }
-    
-    
 }
